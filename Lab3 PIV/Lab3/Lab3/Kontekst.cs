@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Lab3
 {
-    public class Kontekst: DbContext
+    public class Kontekst : DbContext
     {
         //pierwszy sposob
         public DbSet<Zajecia> Zajecias { get; set; }
-        
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
