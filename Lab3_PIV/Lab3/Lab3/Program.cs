@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Lab3.Models;
 
 namespace Lab3
 {
@@ -12,7 +13,7 @@ namespace Lab3
             db.Database.EnsureCreated();
             db.Zajecias.Add(new Zajecia()
             {
-                Nazwa = "P4",
+                Nazwa = "P4x",
                 GodzinaRozpozcecia = new DateTime(2020, 1, 1, 13, 30, 00)
             });
             db.SaveChanges();
@@ -31,25 +32,32 @@ namespace Lab3
 
             //first db
 
-            var nwct = new NorthwindContext();
-            var join = nwct.Orders.Include(x => x.Customer);
-            var query = join.Take(5);
-            foreach (var item in query)
-            {
-                Console.WriteLine($"{item.Customer.CustomerId} : {item.OrderId} : {item.OrderDate}");
-            }
+            //var nwctx = new NorthwindContext();
+            //var join = nwctx.Orders.Include(x => x.Customer);
+            //var query = join.Take(5);
+            //foreach (var item in query)
+            //{
+            //    Console.WriteLine($"{item.Customer.CustomerId} : {item.OrderId} : {item.OrderDate}");
+            //}
 
-            //foreach (var order in nwctx.order.Includex(x=>x.Customer))
+            //foreach (var order in nwctx.order.Includex(x => x.Customer))
             //{
             //    Console.WriteLine(order.OrderId);
             //}
 
-            //foreach (var item in nwctx.PozycjeZamowienia.Include(x=>x))
+            //foreach (var item in nwctx.PozycjeZamowienia.Include(x => x))
             //{
             //    Console.WriteLine($"Id zamówienia:{item.IdZamówienia} Id produktu:{item.IdProduktu}   " +
             //        $"Nazwa produktu:{item.IdProduktuNavigation.NazwaProduktu} Cena jednostkowa:{item.IdProduktuNavigation.CenaJednostkowa} " +
             //        $"Ilość: {item.Ilość}");
             //}
+            var NorthwindContext = new NorthwindContext();
+            var join = NorthwindContext.Orders.Include(x => x.Customer);
+            var query = join.Take(5);
+            foreach (var item in query)
+            {
+                Console.WriteLine($"{item.Customer.CustomerId} : {item.OrderId} : {item.OrderDate}");
+            }
 
 
         }
